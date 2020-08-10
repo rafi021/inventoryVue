@@ -2147,6 +2147,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -38122,13 +38123,15 @@ var render = function() {
   return _c("section", { staticClass: "row flexbox-container" }, [
     _c(
       "div",
-      { staticClass: "col-xl-12 col-10 d-flex justify-content-center" },
+      { staticClass: "col-xl-8 col-10 d-flex justify-content-center" },
       [
         _c("div", { staticClass: "card bg-authentication rounded-0 mb-0" }, [
           _c("div", { staticClass: "row m-0" }, [
-            _c("div", { staticClass: "col-lg-12 col-12 p-0" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-6 col-12 p-0" }, [
               _c("div", { staticClass: "card rounded-0 mb-0 p-2" }, [
-                _vm._m(0),
+                _vm._m(1),
                 _vm._v(" "),
                 _c("p", { staticClass: "px-2" }, [
                   _vm._v("Fill the below form to create a new account.")
@@ -38140,8 +38143,6 @@ var render = function() {
                       "form",
                       { attrs: { action: "index.html" } },
                       [
-                        _vm._m(1),
-                        _vm._v(" "),
                         _vm._m(2),
                         _vm._v(" "),
                         _vm._m(3),
@@ -38150,6 +38151,8 @@ var render = function() {
                         _vm._v(" "),
                         _vm._m(5),
                         _vm._v(" "),
+                        _vm._m(6),
+                        _vm._v(" "),
                         _c(
                           "router-link",
                           {
@@ -38157,7 +38160,7 @@ var render = function() {
                               "btn btn-outline-primary float-left btn-inline mb-50",
                             attrs: { to: { name: "login" } }
                           },
-                          [_vm._v("Login")]
+                          [_vm._v("Login\n                  ")]
                         ),
                         _vm._v(" "),
                         _c(
@@ -38183,6 +38186,26 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "col-lg-6 d-lg-block d-none text-center align-self-center pl-0 pr-3 py-0"
+      },
+      [
+        _c("img", {
+          attrs: {
+            src: __webpack_require__(/*! ../../../assets/images/pages/register.jpg */ "./resources/assets/images/pages/register.jpg"),
+            alt: "branding logo"
+          }
+        })
+      ]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -53521,6 +53544,17 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+
+/***/ "./resources/assets/images/pages/register.jpg":
+/*!****************************************************!*\
+  !*** ./resources/assets/images/pages/register.jpg ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/register.jpg?cfd9ef099bfc1f99c6f2970ae05a6a4a";
 
 /***/ }),
 

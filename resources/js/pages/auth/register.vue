@@ -1,12 +1,12 @@
 <template>
   <section class="row flexbox-container">
-    <div class="col-xl-12 col-10 d-flex justify-content-center">
+    <div class="col-xl-8 col-10 d-flex justify-content-center">
       <div class="card bg-authentication rounded-0 mb-0">
         <div class="row m-0">
-          <!-- <div class="col-lg-6 d-lg-block d-none text-center align-self-center pl-0 pr-3 py-0">
-            <img src="../../../app-assets/images/pages/register.jpg" alt="branding logo">
-          </div> -->
-          <div class="col-lg-12 col-12 p-0">
+          <div class="col-lg-6 d-lg-block d-none text-center align-self-center pl-0 pr-3 py-0">
+            <img src="../../../assets/images/pages/register.jpg" alt="branding logo">
+          </div>
+          <div class="col-lg-6 col-12 p-0">
             <div class="card rounded-0 mb-0 p-2">
               <div class="card-header pt-50 pb-1">
                 <div class="card-title">
@@ -49,7 +49,8 @@
                         </fieldset>
                       </div>
                     </div>
-                    <router-link :to="{name: 'login'}" class="btn btn-outline-primary float-left btn-inline mb-50">Login</router-link>
+                    <router-link :to="{name: 'login'}" class="btn btn-outline-primary float-left btn-inline mb-50">Login
+                    </router-link>
                     <button type="submit" class="btn btn-primary float-right btn-inline mb-50">Register</button>
                   </form>
                 </div>
