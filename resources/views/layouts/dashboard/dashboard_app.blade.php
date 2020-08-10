@@ -20,7 +20,7 @@
 <!-- BEGIN: Body-->
 
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
-
+<div id="app">
     {{-- Header Section Start --}}
     @include('layouts.dashboard.panels.header')
     {{-- Header Section End --}}
@@ -29,19 +29,23 @@
     @include('layouts.dashboard.panels.menubar')
     {{-- Main MenuBar Section End --}}
 
-    @yield('dashboard_content')
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        {{-- Yeild Section Start --}}
+        @yield('dashboard_content')
+        {{-- Yeild Section End --}}
+    </div>
 
     <div class="sidenav-overlay"></div>
     <div class="drag-target"></div>
-
     {{-- Footer Section Start --}}
     @include('layouts.dashboard.panels.footer')
+</div>
     {{-- Footer Section End --}}
-
     {{-- Script Section Start --}}
     @include('layouts.dashboard.panels.scripts')
     {{-- Script Section End --}}
-
 
 </body>
 <!-- END: Body-->
