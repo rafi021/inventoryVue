@@ -16,4 +16,5 @@
 
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('dashboard_assets') }}/js/scripts/pages/dashboard-analytics.js"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
     <!-- END: Page JS-->
