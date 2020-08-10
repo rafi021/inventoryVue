@@ -1,6 +1,7 @@
 let login = require('./pages/auth/login.vue').default;
 let register = require('./pages/auth/register.vue').default;
 let forget = require('./pages/auth/forget.vue').default;
+let dashboard = require('./pages/dashboard/dashboard.vue').default;
 
 // import login from './pages/auth/login.vue';
 //import register from './pages/auth/register.vue';
@@ -21,5 +22,10 @@ export const routes = [
         path: '/forget/password', 
         component: forget, 
         name: 'forget-password'
+    },
+    {
+        path: '/dashboard', 
+        component: dashboard, 
+        name: 'dashboard'
     }
 ];
