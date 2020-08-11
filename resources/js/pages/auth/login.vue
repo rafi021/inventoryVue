@@ -102,7 +102,10 @@ import User from '../../helpers/User'
         axios.post('/api/auth/login',this.form)
         .then(res => {
           console.log(res.data);
+          // store token and user info into localstorage
           User.responseAfterLogin(res);
+          // then redirect auth user in to dashboard page
+          this.$router.push({name: 'dashboard'})
         })
         .catch(err => console.log(err.response.data))
       }

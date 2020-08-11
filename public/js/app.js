@@ -2100,9 +2100,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     login: function login() {
+      var _this = this;
+
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/auth/login', this.form).then(function (res) {
-        console.log(res.data);
-        _helpers_User__WEBPACK_IMPORTED_MODULE_1__["default"].responseAfterLogin(res);
+        console.log(res.data); // store token and user info into localstorage
+
+        _helpers_User__WEBPACK_IMPORTED_MODULE_1__["default"].responseAfterLogin(res); // then redirect auth user in to dashboard page
+
+        _this.$router.push({
+          name: 'dashboard'
+        });
       })["catch"](function (err) {
         return console.log(err.response.data);
       });
