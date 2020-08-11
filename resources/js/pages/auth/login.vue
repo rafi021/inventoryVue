@@ -87,7 +87,6 @@
 
 <script>
 import axios from 'axios';
-import User from '../../helpers/User'
   export default {
     created(){
       if(User.islLoggedIn){
@@ -106,13 +105,23 @@ import User from '../../helpers/User'
       login() {
         axios.post('/api/auth/login',this.form)
         .then(res => {
-          console.log(res.data);
+          //console.log(res.data);
           // store token and user info into localstorage
           User.responseAfterLogin(res);
-          // then redirect auth user in to dashboard page
-          this.$router.push({name: 'dashboard'})
+          Toast.fire({
+            icon: 'success',
+            title: 'Signed in successfully'
+          });
+           // then redirect auth user in to dashboard page
+          this.$router.push({name: 'dashboard'});
         })
-        .catch(err => console.log(err.response.data))
+        .catch(err => {
+          this.errors = err.response.data.errors;
+          Toast.fire({
+            icon: 'warning',
+            title: 'Invalid Email or Password'
+          });
+        })
       }
     }
   }

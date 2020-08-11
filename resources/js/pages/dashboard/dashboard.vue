@@ -512,7 +512,6 @@
 </template>
 
 <script>
-import User from '../../helpers/User'
     export default {
     created(){
       if(!User.islLoggedIn){
