@@ -13,17 +13,31 @@
               <p class="px-2">Welcome back, please login to your account.</p>
               <div class="card-content">
                 <div class="card-body pt-1">
-                  <form action="index.html">
+                  <form @submit.prevent="login">
                     <fieldset class="form-label-group form-group position-relative has-icon-left">
-                      <input type="text" class="form-control" id="user-name" placeholder="Username" required>
+                      <input 
+                      type="email" 
+                      class="form-control" 
+                      id="user-email" 
+                      placeholder="User Email" 
+                      required 
+                      v-model="form.email"
+                      >
                       <div class="form-control-position">
                         <i class="feather icon-user"></i>
                       </div>
-                      <label for="user-name">Username</label>
+                      <label for="user-email">Username</label>
                     </fieldset>
 
                     <fieldset class="form-label-group position-relative has-icon-left">
-                      <input type="password" class="form-control" id="user-password" placeholder="Password" required>
+                      <input 
+                      type="password" 
+                      class="form-control" 
+                      id="user-password" 
+                      placeholder="Password" 
+                      required 
+                      v-model="form.password"
+                      >
                       <div class="form-control-position">
                         <i class="feather icon-lock"></i>
                       </div>
@@ -72,8 +86,23 @@
 </template>
 
 <script>
+import axios from 'axios';
   export default {
-
+    data(){
+      return{
+        form: {
+          email : null,
+          password: null,
+        }
+      }
+    },
+    methods: {
+      login() {
+        axios.post('/api/auth/login',this.form)
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err.response.data))
+      }
+    }
   }
 </script>
 

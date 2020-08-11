@@ -1997,6 +1997,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2070,7 +2072,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      form: {
+        email: null,
+        password: null
+      }
+    };
+  },
+  methods: {
+    login: function login() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/auth/login', this.form).then(function (res) {
+        return console.log(res.data);
+      })["catch"](function (err) {
+        return console.log(err.response.data);
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -38441,11 +38476,106 @@ var render = function() {
                   _c("div", { staticClass: "card-body pt-1" }, [
                     _c(
                       "form",
-                      { attrs: { action: "index.html" } },
+                      {
+                        on: {
+                          submit: function($event) {
+                            $event.preventDefault()
+                            return _vm.login($event)
+                          }
+                        }
+                      },
                       [
-                        _vm._m(1),
+                        _c(
+                          "fieldset",
+                          {
+                            staticClass:
+                              "form-label-group form-group position-relative has-icon-left"
+                          },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.email,
+                                  expression: "form.email"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "email",
+                                id: "user-email",
+                                placeholder: "User Email",
+                                required: ""
+                              },
+                              domProps: { value: _vm.form.email },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "email",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _vm._m(1),
+                            _vm._v(" "),
+                            _c("label", { attrs: { for: "user-email" } }, [
+                              _vm._v("Username")
+                            ])
+                          ]
+                        ),
                         _vm._v(" "),
-                        _vm._m(2),
+                        _c(
+                          "fieldset",
+                          {
+                            staticClass:
+                              "form-label-group position-relative has-icon-left"
+                          },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.password,
+                                  expression: "form.password"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "password",
+                                id: "user-password",
+                                placeholder: "Password",
+                                required: ""
+                              },
+                              domProps: { value: _vm.form.password },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "password",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _vm._m(2),
+                            _vm._v(" "),
+                            _c("label", { attrs: { for: "user-password" } }, [
+                              _vm._v("Password")
+                            ])
+                          ]
+                        ),
                         _vm._v(" "),
                         _c(
                           "div",
@@ -38523,56 +38653,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "fieldset",
-      {
-        staticClass:
-          "form-label-group form-group position-relative has-icon-left"
-      },
-      [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            id: "user-name",
-            placeholder: "Username",
-            required: ""
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-control-position" }, [
-          _c("i", { staticClass: "feather icon-user" })
-        ]),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "user-name" } }, [_vm._v("Username")])
-      ]
-    )
+    return _c("div", { staticClass: "form-control-position" }, [
+      _c("i", { staticClass: "feather icon-user" })
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "fieldset",
-      { staticClass: "form-label-group position-relative has-icon-left" },
-      [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "password",
-            id: "user-password",
-            placeholder: "Password",
-            required: ""
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-control-position" }, [
-          _c("i", { staticClass: "feather icon-lock" })
-        ]),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "user-password" } }, [_vm._v("Password")])
-      ]
-    )
+    return _c("div", { staticClass: "form-control-position" }, [
+      _c("i", { staticClass: "feather icon-lock" })
+    ])
   },
   function() {
     var _vm = this
