@@ -514,7 +514,7 @@
 <script>
     export default {
     created(){
-      if(!User.islLoggedIn){
+      if(!User.isLoggedIn()){
         this.$router.push({name: 'login'})
       }
     },

@@ -2057,9 +2057,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  created: function created() {// if(User.islLoggedIn){
-    //   this.$router.push({name: 'dashboard'})
-    // }
+  created: function created() {
+    if (User.isLoggedIn()) {
+      this.$router.push({
+        name: 'dashboard'
+      });
+    }
   },
   data: function data() {
     return {
@@ -2108,11 +2111,25 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  created: function created() {
+    User.clearStore();
+    Toast.fire({
+      icon: 'success',
+      title: 'Log Out successfully'
+    });
+    this.$router.push({
+      name: 'login'
+    });
+  }
+});
 
 /***/ }),
 
@@ -2764,7 +2781,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
-    if (!User.islLoggedIn) {
+    if (!User.isLoggedIn()) {
       this.$router.push({
         name: 'login'
       });
@@ -59175,22 +59192,6 @@ var AppStorage = /*#__PURE__*/function () {
       this.storeToken(token);
       this.storeUser(user);
     }
-  }, {
-    key: "clearStore",
-    value: function clearStore() {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-    }
-  }, {
-    key: "getToken",
-    value: function getToken() {
-      return localStorage.getItem('token');
-    }
-  }, {
-    key: "getUser",
-    value: function getUser() {
-      return localStorage.getItem('user');
-    }
   }]);
 
   return AppStorage;
@@ -59280,7 +59281,7 @@ var User = /*#__PURE__*/function () {
     key: "responseAfterLogin",
     value: function responseAfterLogin(res) {
       var access_token = res.data.access_token;
-      var username = res.data.name;
+      var username = res.data.name; //console.log(access_token,username);
 
       if (_Token__WEBPACK_IMPORTED_MODULE_0__["default"].isValid(access_token)) {
         _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].store(access_token, username);
@@ -59289,31 +59290,42 @@ var User = /*#__PURE__*/function () {
   }, {
     key: "hasToken",
     value: function hasToken() {
-      var storedToken = _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].getToken();
+      var storedToken = localStorage.getItem('token');
+      console.log('got token using hasToken Method');
 
       if (storedToken) {
         return _Token__WEBPACK_IMPORTED_MODULE_0__["default"].isValid(storedToken) ? true : false;
       }
+
+      return false;
     }
   }, {
-    key: "islLoggedIn",
-    value: function islLoggedIn() {
+    key: "isLoggedIn",
+    value: function isLoggedIn() {
+      console.log('is logged in called');
       return this.hasToken();
     }
   }, {
     key: "getUserName",
     value: function getUserName() {
       if (this.islLoggedIn()) {
-        return _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].getUser();
+        return localStorage.getItem('user');
       }
     }
   }, {
     key: "getUserID",
     value: function getUserID() {
       if (this.islLoggedIn()) {
-        var payload = _Token__WEBPACK_IMPORTED_MODULE_0__["default"].payload(_AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].getToken());
+        var payload = _Token__WEBPACK_IMPORTED_MODULE_0__["default"].payload(localStorage.getItem('token'));
         return payload.sub;
       }
+    }
+  }, {
+    key: "clearStore",
+    value: function clearStore() {
+      console.log('clear store');
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
     }
   }]);
 
@@ -59679,13 +59691,15 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routes", function() { return routes; });
+// Start of Authentication
 var login = __webpack_require__(/*! ./pages/auth/login.vue */ "./resources/js/pages/auth/login.vue")["default"];
 
 var register = __webpack_require__(/*! ./pages/auth/register.vue */ "./resources/js/pages/auth/register.vue")["default"];
 
 var forget = __webpack_require__(/*! ./pages/auth/forget.vue */ "./resources/js/pages/auth/forget.vue")["default"];
 
-var logout = __webpack_require__(/*! ./pages/auth/logout.vue */ "./resources/js/pages/auth/logout.vue")["default"];
+var logout = __webpack_require__(/*! ./pages/auth/logout.vue */ "./resources/js/pages/auth/logout.vue")["default"]; // End of Authentication
+
 
 var dashboard = __webpack_require__(/*! ./pages/dashboard/dashboard.vue */ "./resources/js/pages/dashboard/dashboard.vue")["default"]; // import login from './pages/auth/login.vue';
 //import register from './pages/auth/register.vue';

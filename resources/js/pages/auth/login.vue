@@ -91,9 +91,9 @@
 import axios from 'axios';
   export default {
     created(){
-      // if(User.islLoggedIn){
-      //   this.$router.push({name: 'dashboard'})
-      // }
+      if(User.isLoggedIn()){
+        this.$router.push({name: 'dashboard'})
+      }
     },
     data(){
       return{
