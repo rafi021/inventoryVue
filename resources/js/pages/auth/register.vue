@@ -20,22 +20,22 @@
                     <div class="form-label-group">
                       <input type="text" id="inputName" class="form-control" placeholder="Name" required v-model="form.name">
                       <label for="inputName">Name</label>
-                      <small class="text_danger" v-if="errors.name">{{ errors.name }}</small>
+                      <small class="text_danger" v-if="errors.name">{{ errors.name[0] }}</small>
                     </div>
                     <div class="form-label-group">
                       <input type="email" id="inputEmail" class="form-control" placeholder="Email" required v-model="form.email">
                       <label for="inputEmail">Email</label>
-                        <small class="text_danger" v-if="errors.email">{{ errors.email }}</small>
+                        <small class="text_danger" v-if="errors.email">{{ errors.email[0] }}</small>
                     </div>
                     <div class="form-label-group">
                       <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model="form.password">
                       <label for="inputPassword">Password</label>
-                        <small class="text_danger" v-if="errors.password">{{ errors.password }}</small>
+                        <small class="text_danger" v-if="errors.password">{{ errors.password[0] }}</small>
                     </div>
                     <div class="form-label-group">
                       <input type="password" id="inputConfPassword" class="form-control" placeholder="Confirm Password" required v-model="form.password_confirmation">
                       <label for="inputConfPassword">Confirm Password</label>
-                        <small class="text_danger" v-if="errors.password_confirmation">{{ errors.password_confirmation }}</small>
+                        <small class="text_danger" v-if="errors.password_confirmation">{{ errors.password_confirmation[0] }}</small>
                     </div>
                     <div class="form-group row">
                       <div class="col-12">

@@ -42041,7 +42041,7 @@ var render = function() {
                           _vm._v(" "),
                           _vm.errors.name
                             ? _c("small", { staticClass: "text_danger" }, [
-                                _vm._v(_vm._s(_vm.errors.name))
+                                _vm._v(_vm._s(_vm.errors.name[0]))
                               ])
                             : _vm._e()
                         ]),
@@ -42080,7 +42080,7 @@ var render = function() {
                           _vm._v(" "),
                           _vm.errors.email
                             ? _c("small", { staticClass: "text_danger" }, [
-                                _vm._v(_vm._s(_vm.errors.email))
+                                _vm._v(_vm._s(_vm.errors.email[0]))
                               ])
                             : _vm._e()
                         ]),
@@ -42123,7 +42123,7 @@ var render = function() {
                           _vm._v(" "),
                           _vm.errors.password
                             ? _c("small", { staticClass: "text_danger" }, [
-                                _vm._v(_vm._s(_vm.errors.password))
+                                _vm._v(_vm._s(_vm.errors.password[0]))
                               ])
                             : _vm._e()
                         ]),
@@ -42166,7 +42166,9 @@ var render = function() {
                           _vm._v(" "),
                           _vm.errors.password_confirmation
                             ? _c("small", { staticClass: "text_danger" }, [
-                                _vm._v(_vm._s(_vm.errors.password_confirmation))
+                                _vm._v(
+                                  _vm._s(_vm.errors.password_confirmation[0])
+                                )
                               ])
                             : _vm._e()
                         ]),
