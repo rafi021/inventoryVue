@@ -89,6 +89,11 @@
 import axios from 'axios';
 import User from '../../helpers/User'
   export default {
+    created(){
+      if(User.islLoggedIn){
+        this.$router.push({name: 'dashboard'})
+      }
+    },
     data(){
       return{
         form: {

@@ -2090,6 +2090,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  created: function created() {
+    if (_helpers_User__WEBPACK_IMPORTED_MODULE_1__["default"].islLoggedIn) {
+      this.$router.push({
+        name: 'dashboard'
+      });
+    }
+  },
   data: function data() {
     return {
       form: {
@@ -2206,6 +2213,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers_User__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/User */ "./resources/js/helpers/User.js");
 //
 //
 //
@@ -2719,7 +2727,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  created: function created() {
+    if (!_helpers_User__WEBPACK_IMPORTED_MODULE_0__["default"].islLoggedIn) {
+      this.$router.push({
+        name: 'login'
+      });
+    }
+  }
+});
 
 /***/ }),
 
