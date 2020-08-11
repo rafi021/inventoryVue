@@ -16,23 +16,26 @@
               <p class="px-2">Fill the below form to create a new account.</p>
               <div class="card-content">
                 <div class="card-body pt-0">
-                  <form action="index.html">
+                  <form @submit.prevent="register">
                     <div class="form-label-group">
-                      <input type="text" id="inputName" class="form-control" placeholder="Name" required>
+                      <input type="text" id="inputName" class="form-control" placeholder="Name" required v-model="form.name">
                       <label for="inputName">Name</label>
+                      <small class="text_danger" v-if="errors.name">{{ errors.name }}</small>
                     </div>
                     <div class="form-label-group">
-                      <input type="email" id="inputEmail" class="form-control" placeholder="Email" required>
+                      <input type="email" id="inputEmail" class="form-control" placeholder="Email" required v-model="form.email">
                       <label for="inputEmail">Email</label>
+                        <small class="text_danger" v-if="errors.email">{{ errors.email }}</small>
                     </div>
                     <div class="form-label-group">
-                      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model="form.password">
                       <label for="inputPassword">Password</label>
+                        <small class="text_danger" v-if="errors.password">{{ errors.password }}</small>
                     </div>
                     <div class="form-label-group">
-                      <input type="password" id="inputConfPassword" class="form-control" placeholder="Confirm Password"
-                        required>
+                      <input type="password" id="inputConfPassword" class="form-control" placeholder="Confirm Password" required v-model="form.password_confirmation">
                       <label for="inputConfPassword">Confirm Password</label>
+                        <small class="text_danger" v-if="errors.password_confirmation">{{ errors.password_confirmation }}</small>
                     </div>
                     <div class="form-group row">
                       <div class="col-12">
@@ -64,8 +67,43 @@
 </template>
 
 <script>
+import Axios from 'axios'
   export default {
-
+     created(){
+      if(User.islLoggedIn){
+        this.$router.push({name: 'dashboard'})
+      }
+    },
+    data(){
+      return{
+        form: {
+          name: null,
+          email: null,
+          password: null,
+          password_confirmation: null
+        },
+        errors: {}
+      }
+    },
+    methods: {
+      register() {
+        axios.post('/api/auth/register',this.form)
+        .then(res => {
+          //console.log(res.data);
+          // store token and user info into localstorage
+          User.responseAfterLogin(res);
+          Toast.fire({
+            icon: 'success',
+            title: 'Signed in successfully'
+          });
+           // then redirect auth user in to dashboard page
+          this.$router.push({name: 'dashboard'});
+        })
+        .catch(err => {
+          this.errors = err.response.data.errors;
+        })
+      }
+    }
   }
 </script>
 
