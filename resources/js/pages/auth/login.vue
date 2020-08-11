@@ -23,6 +23,7 @@
                       required 
                       v-model="form.email"
                       >
+                      <small class="text-danger" v-if="errors.email">{{ errors.email[0] }}</small>
                       <div class="form-control-position">
                         <i class="feather icon-user"></i>
                       </div>
@@ -38,6 +39,7 @@
                       required 
                       v-model="form.password"
                       >
+                      <small class="text-danger" v-if="errors.password">{{ errors.password[0] }}</small>
                       <div class="form-control-position">
                         <i class="feather icon-lock"></i>
                       </div>
@@ -89,16 +91,17 @@
 import axios from 'axios';
   export default {
     created(){
-      if(User.islLoggedIn){
-        this.$router.push({name: 'dashboard'})
-      }
+      // if(User.islLoggedIn){
+      //   this.$router.push({name: 'dashboard'})
+      // }
     },
     data(){
       return{
         form: {
           email : null,
           password: null,
-        }
+        },
+        errors: {}
       }
     },
     methods: {
