@@ -87,6 +87,7 @@
 
 <script>
 import axios from 'axios';
+import User from '../../helpers/User'
   export default {
     data(){
       return{
@@ -99,7 +100,10 @@ import axios from 'axios';
     methods: {
       login() {
         axios.post('/api/auth/login',this.form)
-        .then(res => console.log(res.data))
+        .then(res => {
+          console.log(res.data);
+          User.responseAfterLogin(res);
+        })
         .catch(err => console.log(err.response.data))
       }
     }
