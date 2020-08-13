@@ -24,13 +24,22 @@
 
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 <div id="app">
-    {{-- Header Section Start --}}
-    @include('layouts.dashboard.panels.header')
-    {{-- Header Section End --}}
 
-    {{-- Main MenuBar Section Start --}}
-    @include('layouts.dashboard.panels.menubar')
-    {{-- Main MenuBar Section End --}}
+    <div id="panel_header" style="display: none" 
+    v-show=" $route.path === '/login' || $route.path === '/register' || $route.path === '/logout' || $route.path === '/forget/password' ? false : true "
+    >
+        {{-- Header Section Start --}}
+        @include('layouts.dashboard.panels.header')
+        {{-- Header Section End --}}
+    </div>
+
+    <div id="panel_menubar" style="display: none"
+    v-show=" $route.path === '/login' || $route.path === '/register' || $route.path === '/logout' || $route.path === '/forget/password' ? false : true "
+    >
+        {{-- Main MenuBar Section Start --}}
+        @include('layouts.dashboard.panels.menubar')
+        {{-- Main MenuBar Section End --}}
+    </div>
 
     <div class="app-content content">
         <div class="content-overlay"></div>
@@ -42,16 +51,41 @@
 
     <div class="sidenav-overlay"></div>
     <div class="drag-target"></div>
-    {{-- Footer Section Start --}}
-    @include('layouts.dashboard.panels.footer')
 
-    {{-- Footer Section End --}}
+
+    <div id="panel_footer" style="display: none"
+    v-show=" $route.path === '/login' || $route.path === '/register' || $route.path === '/logout' || $route.path === '/forget/password' ? false : true "
+    >
+        {{-- Footer Section Start --}}
+        @include('layouts.dashboard.panels.footer')
+        {{-- Footer Section End --}}
+    </div>
+</div>
     {{-- Script Section Start --}}
     @include('layouts.dashboard.panels.scripts')
     {{-- Script Section End --}}
-</div>
+
 <script>
-    
+    const token = localStorage.getItem('token');
+    // const panel_header = document.getElementById('panel_header');
+    // const panel_menubar = document.getElementById('panel_menubar');
+    // const panel_footer = document.getElementById('panel_footer');
+    // console.log(panel_header, panel_menubar, panel_footer);
+    let isloggedIn = false;
+
+    if(token)
+    {
+        isloggedIn = true;
+        $("#panel_header").css("display", "");
+        $("#panel_menubar").css("display", "");
+        $("#panel_footer").css("display", "");
+        // panel_header.style.display="none";
+        // panel_menubar.style.display="none";
+        // panel_footer.style.display="none";
+    }
+    else{
+        isloggedIn = false;
+    }
 </script>
 </body>
 <!-- END: Body-->
