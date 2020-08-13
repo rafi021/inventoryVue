@@ -11,5 +11,15 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+mix.js([
+    'resources/js/app.js',
+    // 'dashboard_assets/vendors/js/vendors.min.js',
+    // 'dashboard_assets/vendors/js/charts/apexcharts.min.js',
+    // 'dashboard_assets/vendors/js/extensions/tether.min.js',
+    // 'dashboard_assets/vendors/js/extensions/shepherd.min.js',
+    // 'dashboard_assets/js/core/app-menu.js',
+    // 'dashboard_assets/js/core/app.js',
+    // 'dashboard_assets/js/scripts/components.js',
+    // 'dashboard_assets/js/scripts/pages/dashboard-analytics.js',
+    ], 'public/js')
     .sass('resources/sass/app.scss', 'public/css');

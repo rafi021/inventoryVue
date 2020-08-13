@@ -12,6 +12,8 @@
     <meta name="author" content="PIXINVENT">
     <title>{{ env('APP_NAME') }}</title>
 
+    <script src="{{ mix('js/app.js') }}" defer></script>
+
     {{-- Style Section Start --}}
     @include('layouts.dashboard.panels.styles')
     {{-- Style Section End --}}
@@ -21,6 +23,7 @@
 <!-- BEGIN: Body-->
 
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+<div id="app">
     {{-- Header Section Start --}}
     @include('layouts.dashboard.panels.header')
     {{-- Header Section End --}}
@@ -32,11 +35,9 @@
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
-        <div id="app">
             {{-- Yeild Section Start --}}
             @yield('dashboard_content')
             {{-- Yeild Section End --}}
-        </div>
     </div>
 
     <div class="sidenav-overlay"></div>
@@ -48,8 +49,10 @@
     {{-- Script Section Start --}}
     @include('layouts.dashboard.panels.scripts')
     {{-- Script Section End --}}
-
+</div>
+<script>
+    
+</script>
 </body>
 <!-- END: Body-->
-
 </html>
