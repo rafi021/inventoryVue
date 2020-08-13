@@ -4,10 +4,16 @@ let register = require('./pages/auth/register.vue').default;
 let forget = require('./pages/auth/forget.vue').default;
 let logout = require('./pages/auth/logout.vue').default;
 // End of Authentication
+
+// Dashboard Page Start
 let dashboard = require('./pages/dashboard/dashboard.vue').default;
 
-// import login from './pages/auth/login.vue';
-//import register from './pages/auth/register.vue';
+// Dashboard Page End
+// Employee Menu Route Start
+let store_employee = require('./pages/employee/create.vue').default;
+let index_employee = require('./pages/employee/index.vue').default;
+// Employee Menu Route End
+
 
 
 export const routes = [
@@ -15,5 +21,9 @@ export const routes = [
     { path: '/register', component: register, name: 'register' },
     { path: '/forget/password', component: forget, name: 'forget-password' },
     { path: '/logout', component: logout, name: 'logout' },
-    { path: '/dashboard', component: dashboard, name: 'dashboard'}
+    { path: '/dashboard', component: dashboard, name: 'dashboard'},
+    //Employee Menu Route List Start
+    { path: '/store/employee', component: store_employee, name: 'store-employee'},
+    { path: '/index/employee', component: index_employee, name: 'index-employee'},
+    //Employee Menu Route List End
 ];

@@ -37,6 +37,11 @@ const Toast = Swal.mixin({
 window.Toast = Toast;
 // Sweet Alert End
 
+// Notification Start
+import Notification from './helpers/Notification';
+window.Notification = Notification;
+// Notification End
+
 const app = new Vue({
     el: '#app',
     router,
