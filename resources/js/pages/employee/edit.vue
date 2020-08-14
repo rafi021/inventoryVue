@@ -1,5 +1,5 @@
 <template>
-    <section>
+      <section>
         <div class="row breadcrumbs-top mb-3">
             <div class="col-12">
                 <h2 class="content-header-title float-left mb-0">Employee Module</h2>
@@ -9,7 +9,7 @@
                         </li>
                         <li class="breadcrumb-item"><router-link :to="{name: 'index-employee'}">All Employee</router-link>
                         </li>
-                        <li class="breadcrumb-item active"><router-link to="#">Add New Employee Form</router-link>
+                        <li class="breadcrumb-item active"><router-link to="#">Update Employee Form</router-link>
                         </li>
                     </ol>
                 </div>
@@ -19,11 +19,11 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Add New Employee</h4>
+                        <h4 class="card-title">Update Employee</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" @submit.prevent="employeeInsert" enctype="multipart/form-data">
+                            <form class="form" @submit.prevent="editEmployee" enctype="multipart/form-data">
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-6 col-12">
@@ -90,15 +90,16 @@
                                             <fieldset class="form-group">
                                                 <label for="basicInputFile">Photo Upload</label>
                                                 <div class="custom-file">
-                                                    <input type="file" name="photo" class="custom-file-input" id="inputGroupFile01" @change="onFileSelected">
-                                                    <small class="text-danger" v-if="errors.photo">{{ errors.photo[0] }}</small>
+                                                    <input type="file" name="new_photo" class="custom-file-input" id="inputGroupFile01" @change="onFileSelected">
+                                                    <small class="text-danger" v-if="errors.new_photo">{{ errors.new_photo[0] }}</small>
                                                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                                 </div>
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <fieldset class="form-group">
-                                                <img :src="form.photo" alt="" style="height: 50px; width: 50px">
+                                                <!-- <img :src="form.photo" alt="old_image" style="height: 50px; width: 50px"> -->
+                                                <img :src="form.new_photo" alt="new_image" style="height: 50px; width: 50px">
                                             </fieldset>
                                         </div>
                                         <!-- <div class="form-group col-12">
@@ -116,7 +117,7 @@
                                         </div> -->
                                         <div class="col-12">
                                             <button type="submit"
-                                                class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Submit</button>
+                                                class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Update</button>
                                             <button type="reset"
                                                 class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
                                         </div>
@@ -132,45 +133,50 @@
 </template>
 
 <script>
-    export default {
-        created() {
+export default {
+    created() {
             if (!User.isLoggedIn()) {
                 this.$router.push({ name: 'login' })
             }
+            let id = this.$route.params.id;
+            axios.get(`/api/employee/${id}`)
+            .then(res => {
+                this.form = res.data
+                console.log(res.data, this.form);
+            })
+            .catch(err => console.log(err))
         },
         data() {
             return {
                 form: {
-                    name: null,
-                    email: null,
-                    phone: null,
-                    salary: null,
-                    address: null,
-                    photo: null,
-                    nid: null,
-                    joining_date: null,
+                    name: '',
+                    email: '',
+                    phone: '',
+                    salary: '',
+                    address: '',
+                    photo: '',
+                    new_photo: '',
+                    nid: '',
+                    joining_date: '',
                 },
                 errors: {},
             }
         },
         methods: {
-            employeeInsert(){
-                console.log(this.form);
-                // axios.post('/api/employee', this.form)
-                // .then(res => console.log(res.data))
-                // .catch(err => console.log(err))
-                axios.post('/api/employee',this.form)
+            editEmployee(){
+                let id = this.$route.params.id;
+                axios.put(`/api/employee/${id}`, this.form)
                 .then(res => {
                     // then redirect auth user in to dashboard page
                     this.$router.push({ name: 'index-employee' });
                     Notification.success();
                 })
                 .catch(err => {
-                this.errors = err.response.data.errors;
-                Toast.fire({
-                    icon: 'warning',
-                    title: 'Invalid data input!!!'
-                });
+                    this.errors = err.response.data.errors;
+                    Toast.fire({
+                        icon: 'warning',
+                        title: 'Invalid data input!!!'
+                    });
                 })
             },
             onFileSelected(event){
@@ -180,14 +186,14 @@
                 }else{
                     let reader = new FileReader();
                     reader.onloadend = file => {
-                        this.form.photo = reader.result;
+                        this.form.new_photo = reader.result;
                         // console.log(event.target.result)
                     };
                     reader.readAsDataURL(file);
                 }
             }
         }
-    }
+}
 </script>
 
 <style>

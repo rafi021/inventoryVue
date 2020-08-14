@@ -11,6 +11,7 @@ let dashboard = require('./pages/dashboard/dashboard.vue').default;
 // Dashboard Page End
 // Employee Menu Route Start
 let store_employee = require('./pages/employee/create.vue').default;
+let edit_employee = require('./pages/employee/edit.vue').default;
 let index_employee = require('./pages/employee/index.vue').default;
 // Employee Menu Route End
 
@@ -24,6 +25,7 @@ export const routes = [
     { path: '/dashboard', component: dashboard, name: 'dashboard'},
     //Employee Menu Route List Start
     { path: '/store/employee', component: store_employee, name: 'store-employee'},
-    { path: '/index/employee', component: index_employee, name: 'index-employee'},
+    { path: '/edit/employee/:id', component: edit_employee, name: 'edit-employee'},
+    { path: '/employee', component: index_employee, name: 'index-employee'},
     //Employee Menu Route List End
 ];

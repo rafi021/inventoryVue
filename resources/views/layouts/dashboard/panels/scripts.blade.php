@@ -15,6 +15,6 @@
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="{{ asset('dashboard_assets/js/scripts/pages/dashboard-analytics.js') }}"></script>
+    {{-- <script src="{{ asset('dashboard_assets/js/scripts/pages/dashboard-analytics.js') }}"></script> --}}
     @yield('dashboard_script')
     <!-- END: Page JS-->

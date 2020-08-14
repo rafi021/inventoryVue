@@ -42,6 +42,10 @@ import Notification from './helpers/Notification';
 window.Notification = Notification;
 // Notification End
 
+// axios start
+import axios from "axios";
+window.axios = axios;
+// axios end
 const app = new Vue({
     el: '#app',
     router,

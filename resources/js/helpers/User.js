@@ -15,7 +15,7 @@ class User{
 
     hasToken(){
         const storedToken = localStorage.getItem('token');
-        console.log('got token using hasToken Method');
+        //console.log('got token using hasToken Method');
         if(storedToken) {
             return Token.isValid(storedToken) ? true : false;
         }
@@ -23,7 +23,7 @@ class User{
     }
 
     isLoggedIn(){
-        console.log('is logged in called')
+        //console.log('is logged in called')
         return this.hasToken();
     }
 
@@ -41,7 +41,7 @@ class User{
     }
 
     clearStore(){
-        console.log('clear store');
+        //console.log('clear store');
         localStorage.removeItem('token');    
         localStorage.removeItem('user');    
     }

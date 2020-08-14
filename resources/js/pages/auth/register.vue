@@ -67,7 +67,6 @@
 </template>
 
 <script>
-import Axios from 'axios'
   export default {
      created(){
       if(User.islLoggedIn){
