@@ -49149,85 +49149,89 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "table-responsive" }, [
-                _c("table", { staticClass: "table table-bordered mb-0" }, [
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _c(
-                    "tbody",
-                    _vm._l(_vm.searchFilter, function(employee, index) {
-                      return _c("tr", { key: employee.id }, [
-                        _c("td", { attrs: { scope: "row" } }, [
-                          _vm._v(_vm._s(index + 1))
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c("img", {
-                            attrs: {
-                              src: employee.photo,
-                              id: "em_photo",
-                              alt: ""
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(
-                            _vm._s(employee.name) +
-                              " [" +
-                              _vm._s(employee.nid) +
-                              "]"
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(employee.email))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(employee.phone))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(employee.salary))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(employee.address))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(employee.joining_date))]),
-                        _vm._v(" "),
-                        _c(
-                          "td",
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass:
-                                  "btn btn-icon btn-outline-primary mr-1 mb-1 waves-effect waves-light",
-                                attrs: {
-                                  to: {
-                                    name: "edit-employee",
-                                    params: { id: employee.id }
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "feather icon-edit" })]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "a",
-                              {
-                                staticClass:
-                                  "btn btn-icon btn-outline-danger mr-1 mb-1 waves-effect waves-light",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.deleteEmployee(employee.id)
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "feather icon-trash" })]
+                _c(
+                  "table",
+                  { staticClass: "table table-hover-animation mb-0" },
+                  [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c(
+                      "tbody",
+                      _vm._l(_vm.searchFilter, function(employee, index) {
+                        return _c("tr", { key: employee.id }, [
+                          _c("td", { attrs: { scope: "row" } }, [
+                            _vm._v(_vm._s(index + 1))
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c("img", {
+                              attrs: {
+                                src: employee.photo,
+                                id: "em_photo",
+                                alt: ""
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(
+                              _vm._s(employee.name) +
+                                " [" +
+                                _vm._s(employee.nid) +
+                                "]"
                             )
-                          ],
-                          1
-                        )
-                      ])
-                    }),
-                    0
-                  )
-                ])
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(employee.email))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(employee.phone))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(employee.salary))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(employee.address))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(employee.joining_date))]),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass:
+                                    "btn btn-icon btn-outline-primary mr-1 mb-1 waves-effect waves-light",
+                                  attrs: {
+                                    to: {
+                                      name: "edit-employee",
+                                      params: { id: employee.id }
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "feather icon-edit" })]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "btn btn-icon btn-outline-danger mr-1 mb-1 waves-effect waves-light",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.deleteEmployee(employee.id)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "feather icon-trash" })]
+                              )
+                            ],
+                            1
+                          )
+                        ])
+                      }),
+                      0
+                    )
+                  ]
+                )
               ])
             ])
           ])
