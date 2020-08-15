@@ -67011,6 +67011,102 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/category/create.vue":
+/*!************************************************!*\
+  !*** ./resources/js/pages/category/create.vue ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
+  script,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+component.options.__file = "resources/js/pages/category/create.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/category/edit.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/pages/category/edit.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
+  script,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+component.options.__file = "resources/js/pages/category/edit.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/category/index.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/pages/category/index.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
+  script,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+component.options.__file = "resources/js/pages/category/index.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/pages/dashboard/dashboard.vue":
 /*!****************************************************!*\
   !*** ./resources/js/pages/dashboard/dashboard.vue ***!
@@ -67568,6 +67664,14 @@ var store_supplier = __webpack_require__(/*! ./pages/supplier/create.vue */ "./r
 var edit_supplier = __webpack_require__(/*! ./pages/supplier/edit.vue */ "./resources/js/pages/supplier/edit.vue")["default"];
 
 var index_supplier = __webpack_require__(/*! ./pages/supplier/index.vue */ "./resources/js/pages/supplier/index.vue")["default"]; // Supplier Menu Route End
+// Category Meny Route Start
+
+
+var store_category = __webpack_require__(/*! ./pages/category/create.vue */ "./resources/js/pages/category/create.vue")["default"];
+
+var edit_category = __webpack_require__(/*! ./pages/category/edit.vue */ "./resources/js/pages/category/edit.vue")["default"];
+
+var index_category = __webpack_require__(/*! ./pages/category/index.vue */ "./resources/js/pages/category/index.vue")["default"]; // Category Meny Route End
 
 
 var routes = [{
@@ -67617,7 +67721,21 @@ var routes = [{
   path: '/supplier',
   component: index_supplier,
   name: 'index-supplier'
-} //Supplier Menu Route List End
+}, //Supplier Menu Route List End
+// Category Menu Route List Start
+{
+  path: '/store/category',
+  component: store_category,
+  name: 'store-category'
+}, {
+  path: '/edit/category/:id',
+  component: edit_category,
+  name: 'edit-category'
+}, {
+  path: '/category',
+  component: index_category,
+  name: 'index-category'
+} // Category Menu Route List End
 ];
 
 /***/ }),

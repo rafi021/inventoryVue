@@ -19,6 +19,11 @@ let store_supplier = require('./pages/supplier/create.vue').default;
 let edit_supplier = require('./pages/supplier/edit.vue').default;
 let index_supplier = require('./pages/supplier/index.vue').default;
 // Supplier Menu Route End
+// Category Meny Route Start
+let store_category = require('./pages/category/create.vue').default;
+let edit_category = require('./pages/category/edit.vue').default;
+let index_category = require('./pages/category/index.vue').default;
+// Category Meny Route End
 
 
 
@@ -39,5 +44,9 @@ export const routes = [
     { path: '/edit/supplier/:id', component: edit_supplier, name: 'edit-supplier'},
     { path: '/supplier', component: index_supplier, name: 'index-supplier'},
     //Supplier Menu Route List End
-
+    // Category Menu Route List Start
+    {path: '/store/category', component: store_category, name: 'store-category'},
+    {path: '/edit/category/:id', component: edit_category, name: 'edit-category'},
+    {path: '/category', component: index_category, name: 'index-category'},
+    // Category Menu Route List End
 ];
