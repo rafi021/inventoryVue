@@ -145,7 +145,7 @@
                 })
               })
               .catch(() => {
-                this.$router.push({name: 'employee'})
+                this.$router.push({name: 'index-employee'})
               })
               Swal.fire(
                 'Deleted!',

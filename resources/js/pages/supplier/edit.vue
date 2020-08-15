@@ -1,15 +1,15 @@
 <template>
-    <section>
+      <section>
         <div class="row breadcrumbs-top mb-3">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">Employee Module</h2>
+                <h2 class="content-header-title float-left mb-0">Supplier Module</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><router-link :to="{name: 'dashboard'}">Home</router-link>
                         </li>
-                        <li class="breadcrumb-item"><router-link :to="{name: 'index-employee'}">All Employee</router-link>
+                        <li class="breadcrumb-item"><router-link :to="{name: 'index-supplier'}">All Supplier</router-link>
                         </li>
-                        <li class="breadcrumb-item active"><router-link to="#">Add New Employee Form</router-link>
+                        <li class="breadcrumb-item active"><router-link to="#">Update Supplier Form</router-link>
                         </li>
                     </ol>
                 </div>
@@ -19,11 +19,11 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Add New Employee</h4>
+                        <h4 class="card-title">Update Supplier</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" @submit.prevent="employeeInsert" enctype="multipart/form-data">
+                            <form class="form" @submit.prevent="editSupplier" enctype="multipart/form-data">
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-6 col-12">
@@ -53,28 +53,11 @@
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-label-group">
-                                                <input type="number" id="salary-floating" class="form-control"
-                                                    name="salary" placeholder="Salary"
-                                                    v-model="form.salary">
-                                                    <small class="text-danger" v-if="errors.salary">{{ errors.salary[0] }}</small>
-                                                <label for="salary-floating">Salary</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-label-group">
-                                                <input type="text" id="nid-floating" class="form-control"
-                                                    name="nid" placeholder="National ID" v-model="form.nid">
-                                                    <small class="text-danger" v-if="errors.nid">{{ errors.nid[0] }}</small>
-                                                <label for="nid-floating">National Identification No:</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-label-group">
-                                                <input type="date" id="joining-date-column" class="form-control"
-                                                    name="joining_date" placeholder="Joining Date"
-                                                    v-model="form.joining_date">
-                                                    <small class="text-danger" v-if="errors.joining_date">{{ errors.joining_date[0] }}</small>
-                                                <label for="joining-date-column">Joining Date</label>
+                                                <input type="text" id="shopname-floating" class="form-control"
+                                                    name="shopname" placeholder="Shopname"
+                                                    v-model="form.shopname">
+                                                    <small class="text-danger" v-if="errors.shopname">{{ errors.shopname[0] }}</small>
+                                                <label for="shopname-floating">Shopname</label>
                                             </div>
                                         </div>
                                         <div class="col-md-12 col-12">
@@ -90,15 +73,16 @@
                                             <fieldset class="form-group">
                                                 <label for="basicInputFile">Photo Upload</label>
                                                 <div class="custom-file">
-                                                    <input type="file" name="photo" class="custom-file-input" id="inputGroupFile01" @change="onFileSelected">
-                                                    <small class="text-danger" v-if="errors.photo">{{ errors.photo[0] }}</small>
+                                                    <input type="file" name="new_photo" class="custom-file-input" id="inputGroupFile01" @change="onFileSelected">
+                                                    <small class="text-danger" v-if="errors.new_photo">{{ errors.new_photo[0] }}</small>
                                                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                                 </div>
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <fieldset class="form-group">
-                                                <img :src="form.photo" alt="" style="height: 50px; width: 50px">
+                                                <!-- <img :src="form.photo" alt="old_image" style="height: 50px; width: 50px"> -->
+                                                <img :src="form.new_photo" alt="new_image" style="height: 50px; width: 50px">
                                             </fieldset>
                                         </div>
                                         <!-- <div class="form-group col-12">
@@ -116,7 +100,7 @@
                                         </div> -->
                                         <div class="col-12">
                                             <button type="submit"
-                                                class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Submit</button>
+                                                class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Update</button>
                                             <button type="reset"
                                                 class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
                                         </div>
@@ -132,45 +116,48 @@
 </template>
 
 <script>
-    export default {
-        created() {
+export default {
+    created() {
             if (!User.isLoggedIn()) {
                 this.$router.push({ name: 'login' })
             }
+            let id = this.$route.params.id;
+            axios.get(`/api/supplier/${id}`)
+            .then(res => {
+                this.form = res.data
+                //console.log(res.data, this.form);
+            })
+            .catch(err => console.log(err))
         },
         data() {
             return {
                 form: {
-                    name: null,
-                    email: null,
-                    phone: null,
-                    salary: null,
-                    address: null,
-                    photo: null,
-                    nid: null,
-                    joining_date: null,
+                    name: '',
+                    email: '',
+                    phone: '',
+                    address: '',
+                    photo: '',
+                    new_photo: '',
+                    shopname: ''
                 },
                 errors: {},
             }
         },
         methods: {
-            employeeInsert(){
-                console.log(this.form);
-                // axios.post('/api/employee', this.form)
-                // .then(res => console.log(res.data))
-                // .catch(err => console.log(err))
-                axios.post('/api/employee',this.form)
+            editSupplier(){
+                let id = this.$route.params.id;
+                axios.put(`/api/supplier/${id}`, this.form)
                 .then(res => {
                     // then redirect auth user in to dashboard page
-                    this.$router.push({ name: 'index-employee' });
+                    this.$router.push({ name: 'index-supplier' });
                     Notification.success();
                 })
                 .catch(err => {
-                this.errors = err.response.data.errors;
-                Toast.fire({
-                    icon: 'warning',
-                    title: 'Invalid data input!!!'
-                });
+                    this.errors = err.response.data.errors;
+                    Toast.fire({
+                        icon: 'warning',
+                        title: 'Invalid data input!!!'
+                    });
                 })
             },
             onFileSelected(event){
@@ -179,16 +166,15 @@
                     Notification.image_validation();
                 }else{
                     let reader = new FileReader();
-                    console.log(reader);
                     reader.onloadend = file => {
-                        this.form.photo = reader.result;
+                        this.form.new_photo = reader.result;
                         // console.log(event.target.result)
                     };
                     reader.readAsDataURL(file);
                 }
             }
         }
-    }
+}
 </script>
 
 <style>

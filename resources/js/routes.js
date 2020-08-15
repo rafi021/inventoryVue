@@ -14,6 +14,12 @@ let store_employee = require('./pages/employee/create.vue').default;
 let edit_employee = require('./pages/employee/edit.vue').default;
 let index_employee = require('./pages/employee/index.vue').default;
 // Employee Menu Route End
+// Supplier Menu Route Start
+let store_supplier = require('./pages/supplier/create.vue').default;
+let edit_supplier = require('./pages/supplier/edit.vue').default;
+let index_supplier = require('./pages/supplier/index.vue').default;
+// Supplier Menu Route End
+
 
 
 
@@ -28,4 +34,10 @@ export const routes = [
     { path: '/edit/employee/:id', component: edit_employee, name: 'edit-employee'},
     { path: '/employee', component: index_employee, name: 'index-employee'},
     //Employee Menu Route List End
+    //Supplier Menu Route List Start
+    { path: '/store/supplier', component: store_supplier, name: 'store-supplier'},
+    { path: '/edit/supplier/:id', component: edit_supplier, name: 'edit-supplier'},
+    { path: '/supplier', component: index_supplier, name: 'index-supplier'},
+    //Supplier Menu Route List End
+
 ];
