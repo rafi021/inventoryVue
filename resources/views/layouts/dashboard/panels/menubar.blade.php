@@ -51,6 +51,20 @@
                     </ul>
                 </li>
                 {{--   Supplier Menu End --}}
+                {{--   Category Menu Start --}}
+                <li class="nav-item"><a href="#"><i class="feather icon-package"></i><span class="menu-title" data-i18n="Category">Category</span></a>
+                    <ul class="menu-content">
+                        <li>
+                            <router-link :to="{name: 'store-category'}"><i class="feather icon-plus-circle"></i><span class="menu-item" data-i18n="Add">Add Category</span>
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{name: 'index-category'}"><i class="feather icon-list"></i><span class="menu-item" data-i18n="Details">All Category</span>
+                            </router-link>
+                        </li>
+                    </ul>
+                </li>
+                {{--   Category Menu End --}}
 
                 {{-- User Code End Here --}}
                 <li class=" nav-item"><a href="app-chat.html"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">Chat</span></a>

@@ -45,7 +45,7 @@
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <fieldset class="form-group">
-                                                <label for="basicInputFile">Photo Upload</label>
+                                                <label for="basicInputFile">Category Photo</label>
                                                 <div class="custom-file">
                                                     <input type="file" name="categoryphoto" class="custom-file-input" id="inputGroupFile01" @change="onFileSelected">
                                                     <small class="text-danger" v-if="errors.photo">{{ errors.photo[0] }}</small>
@@ -58,19 +58,6 @@
                                                 <img :src="form.photo" alt="" style="height: 50px; width: 50px">
                                             </fieldset>
                                         </div>
-                                        <!-- <div class="form-group col-12">
-                                            <fieldset class="checkbox">
-                                                <div class="vs-checkbox-con vs-checkbox-primary">
-                                                    <input type="checkbox">
-                                                    <span class="vs-checkbox">
-                                                        <span class="vs-checkbox--check">
-                                                            <i class="vs-icon feather icon-check"></i>
-                                                        </span>
-                                                    </span>
-                                                    <span class="">Remember me</span>
-                                                </div>
-                                            </fieldset>
-                                        </div> -->
                                         <div class="col-12">
                                             <button type="submit"
                                                 class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Submit</button>

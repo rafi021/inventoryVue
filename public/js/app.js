@@ -2337,19 +2337,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     if (!User.isLoggedIn()) {
@@ -47597,7 +47584,7 @@ var render = function() {
                       _c("div", { staticClass: "col-md-6 col-12" }, [
                         _c("fieldset", { staticClass: "form-group" }, [
                           _c("label", { attrs: { for: "basicInputFile" } }, [
-                            _vm._v("Photo Upload")
+                            _vm._v("Category Photo")
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "custom-file" }, [
