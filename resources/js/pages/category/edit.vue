@@ -29,17 +29,17 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-label-group">
                                                 <input type="text" id="category-name" class="form-control"
-                                                    placeholder="Category Name" name="categoryname" v-model="form.name">
-                                                    <small class="text-danger" v-if="errors.name">{{ errors.name[0] }}</small>
+                                                    placeholder="Category Name" name="categoryname" v-model="form.categoryname">
+                                                    <small class="text-danger" v-if="errors.categoryname">{{ errors.categoryname[0] }}</small>
                                                 <label for="category-name">Category Name</label>
                                             </div>
                                         </div>
                                         <div class="col-md-12 col-12">
                                             <div class="form-label-group">
                                                 <textarea name="categorydescription" id="category-description" cols="30" rows="10"
-                                                    placeholder="Category Description" v-model="form.description"
+                                                    placeholder="Category Description" v-model="form.categorydescription"
                                                     class="form-control"></textarea>
-                                                <small class="text-danger" v-if="errors.description">{{ errors.description[0] }}</small>
+                                                <small class="text-danger" v-if="errors.categorydescription">{{ errors.categorydescription[0] }}</small>
                                                 <label for="category-description">Category Description</label>
                                             </div>
                                         </div>
@@ -48,17 +48,7 @@
                                                 <label for="basicInputFile">Category Photo</label>
                                                 <div class="custom-file">
                                                     <input type="file" name="categoryphoto" class="custom-file-input" id="inputGroupFile01" @change="onFileSelected">
-                                                    <small class="text-danger" v-if="errors.photo">{{ errors.photo[0] }}</small>
-                                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                                </div>
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <fieldset class="form-group">
-                                                <label for="basicInputFile">Photo Upload</label>
-                                                <div class="custom-file">
-                                                    <input type="file" name="new_photo" class="custom-file-input" id="inputGroupFile01" @change="onFileSelected">
-                                                    <small class="text-danger" v-if="errors.new_photo">{{ errors.new_photo[0] }}</small>
+                                                    <small class="text-danger" v-if="errors.categoryphoto">{{ errors.categoryphoto[0] }}</small>
                                                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                                 </div>
                                             </fieldset>
@@ -103,9 +93,9 @@ export default {
         data() {
             return {
                 form: {
-                    name: '',
-                    description: '',
-                    photo: '',
+                    categoryname: '',
+                    categorydescription: '',
+                    categoryphoto: '',
                     new_photo: '',
                 },
                 errors: {},

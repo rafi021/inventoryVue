@@ -2348,9 +2348,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: {
-        name: null,
-        description: null,
-        photo: null
+        categoryname: null,
+        categorydescription: null,
+        categoryphoto: null
       },
       errors: {}
     };
@@ -2487,16 +2487,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
@@ -2517,9 +2507,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: {
-        name: '',
-        description: '',
-        photo: '',
+        categoryname: '',
+        categorydescription: '',
+        categoryphoto: '',
         new_photo: ''
       },
       errors: {}
@@ -2682,7 +2672,7 @@ __webpack_require__.r(__webpack_exports__);
     //           this.$router.push({ name: 'login' })
     // }
     axios.get('/api/category').then(function (res) {
-      // console.log(res.data)
+      console.log(res.data);
       _this.categorys = res.data;
     })["catch"](function (err) {
       return console.log(err.response.data);
@@ -2693,7 +2683,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       return this.categorys.filter(function (category) {
-        return category.name.match(_this2.searchWord) || category.email.match(_this2.searchWord) || category.phone.match(_this2.searchWord) || category.shopname.match(_this2.searchWord) || category.address.match(_this2.searchWord);
+        return category.categoryname.match(_this2.searchWord) || category.categorydescription.match(_this2.searchWord);
       });
     }
   },
@@ -47878,8 +47868,8 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.form.name,
-                                expression: "form.name"
+                                value: _vm.form.categoryname,
+                                expression: "form.categoryname"
                               }
                             ],
                             staticClass: "form-control",
@@ -47889,20 +47879,24 @@ var render = function() {
                               placeholder: "Category Name",
                               name: "categoryname"
                             },
-                            domProps: { value: _vm.form.name },
+                            domProps: { value: _vm.form.categoryname },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
                                   return
                                 }
-                                _vm.$set(_vm.form, "name", $event.target.value)
+                                _vm.$set(
+                                  _vm.form,
+                                  "categoryname",
+                                  $event.target.value
+                                )
                               }
                             }
                           }),
                           _vm._v(" "),
-                          _vm.errors.name
+                          _vm.errors.categoryname
                             ? _c("small", { staticClass: "text-danger" }, [
-                                _vm._v(_vm._s(_vm.errors.name[0]))
+                                _vm._v(_vm._s(_vm.errors.categoryname[0]))
                               ])
                             : _vm._e(),
                           _vm._v(" "),
@@ -47919,8 +47913,8 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.form.description,
-                                expression: "form.description"
+                                value: _vm.form.categorydescription,
+                                expression: "form.categorydescription"
                               }
                             ],
                             staticClass: "form-control",
@@ -47931,7 +47925,7 @@ var render = function() {
                               rows: "10",
                               placeholder: "Category Description"
                             },
-                            domProps: { value: _vm.form.description },
+                            domProps: { value: _vm.form.categorydescription },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
@@ -47939,16 +47933,18 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.form,
-                                  "description",
+                                  "categorydescription",
                                   $event.target.value
                                 )
                               }
                             }
                           }),
                           _vm._v(" "),
-                          _vm.errors.description
+                          _vm.errors.categorydescription
                             ? _c("small", { staticClass: "text-danger" }, [
-                                _vm._v(_vm._s(_vm.errors.description[0]))
+                                _vm._v(
+                                  _vm._s(_vm.errors.categorydescription[0])
+                                )
                               ])
                             : _vm._e(),
                           _vm._v(" "),
@@ -47977,9 +47973,9 @@ var render = function() {
                               on: { change: _vm.onFileSelected }
                             }),
                             _vm._v(" "),
-                            _vm.errors.photo
+                            _vm.errors.categoryphoto
                               ? _c("small", { staticClass: "text-danger" }, [
-                                  _vm._v(_vm._s(_vm.errors.photo[0]))
+                                  _vm._v(_vm._s(_vm.errors.categoryphoto[0]))
                                 ])
                               : _vm._e(),
                             _vm._v(" "),
@@ -47999,7 +47995,7 @@ var render = function() {
                         _c("fieldset", { staticClass: "form-group" }, [
                           _c("img", {
                             staticStyle: { height: "50px", width: "50px" },
-                            attrs: { src: _vm.form.photo, alt: "" }
+                            attrs: { src: _vm.form.categoryphoto, alt: "" }
                           })
                         ])
                       ]),
@@ -48149,8 +48145,8 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.form.name,
-                                expression: "form.name"
+                                value: _vm.form.categoryname,
+                                expression: "form.categoryname"
                               }
                             ],
                             staticClass: "form-control",
@@ -48160,20 +48156,24 @@ var render = function() {
                               placeholder: "Category Name",
                               name: "categoryname"
                             },
-                            domProps: { value: _vm.form.name },
+                            domProps: { value: _vm.form.categoryname },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
                                   return
                                 }
-                                _vm.$set(_vm.form, "name", $event.target.value)
+                                _vm.$set(
+                                  _vm.form,
+                                  "categoryname",
+                                  $event.target.value
+                                )
                               }
                             }
                           }),
                           _vm._v(" "),
-                          _vm.errors.name
+                          _vm.errors.categoryname
                             ? _c("small", { staticClass: "text-danger" }, [
-                                _vm._v(_vm._s(_vm.errors.name[0]))
+                                _vm._v(_vm._s(_vm.errors.categoryname[0]))
                               ])
                             : _vm._e(),
                           _vm._v(" "),
@@ -48190,8 +48190,8 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.form.description,
-                                expression: "form.description"
+                                value: _vm.form.categorydescription,
+                                expression: "form.categorydescription"
                               }
                             ],
                             staticClass: "form-control",
@@ -48202,7 +48202,7 @@ var render = function() {
                               rows: "10",
                               placeholder: "Category Description"
                             },
-                            domProps: { value: _vm.form.description },
+                            domProps: { value: _vm.form.categorydescription },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
@@ -48210,16 +48210,18 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.form,
-                                  "description",
+                                  "categorydescription",
                                   $event.target.value
                                 )
                               }
                             }
                           }),
                           _vm._v(" "),
-                          _vm.errors.description
+                          _vm.errors.categorydescription
                             ? _c("small", { staticClass: "text-danger" }, [
-                                _vm._v(_vm._s(_vm.errors.description[0]))
+                                _vm._v(
+                                  _vm._s(_vm.errors.categorydescription[0])
+                                )
                               ])
                             : _vm._e(),
                           _vm._v(" "),
@@ -48248,44 +48250,9 @@ var render = function() {
                               on: { change: _vm.onFileSelected }
                             }),
                             _vm._v(" "),
-                            _vm.errors.photo
+                            _vm.errors.categoryphoto
                               ? _c("small", { staticClass: "text-danger" }, [
-                                  _vm._v(_vm._s(_vm.errors.photo[0]))
-                                ])
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _c(
-                              "label",
-                              {
-                                staticClass: "custom-file-label",
-                                attrs: { for: "inputGroupFile01" }
-                              },
-                              [_vm._v("Choose file")]
-                            )
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-6 col-12" }, [
-                        _c("fieldset", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "basicInputFile" } }, [
-                            _vm._v("Photo Upload")
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "custom-file" }, [
-                            _c("input", {
-                              staticClass: "custom-file-input",
-                              attrs: {
-                                type: "file",
-                                name: "new_photo",
-                                id: "inputGroupFile01"
-                              },
-                              on: { change: _vm.onFileSelected }
-                            }),
-                            _vm._v(" "),
-                            _vm.errors.new_photo
-                              ? _c("small", { staticClass: "text-danger" }, [
-                                  _vm._v(_vm._s(_vm.errors.new_photo[0]))
+                                  _vm._v(_vm._s(_vm.errors.categoryphoto[0]))
                                 ])
                               : _vm._e(),
                             _vm._v(" "),
@@ -48501,16 +48468,18 @@ var render = function() {
                           _c("td", [
                             _c("img", {
                               attrs: {
-                                src: category.photo,
+                                src: category.categoryphoto,
                                 id: "em_photo",
                                 alt: ""
                               }
                             })
                           ]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(category.name))]),
+                          _c("td", [_vm._v(_vm._s(category.categoryname))]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(category.description))]),
+                          _c("td", [
+                            _vm._v(_vm._s(category.categorydescription))
+                          ]),
                           _vm._v(" "),
                           _c(
                             "td",
@@ -48622,7 +48591,7 @@ var staticRenderFns = [
         _c("th", [_vm._v("Name")]),
         _vm._v(" "),
         _c("th", [_vm._v("Description")]),
-        _vm._v(">\n                                    "),
+        _vm._v(" "),
         _c("th", [_vm._v("Actions")])
       ])
     ])

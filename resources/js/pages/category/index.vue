@@ -58,7 +58,7 @@
                                         <th>ID</th>
                                         <th>Photo</th>
                                         <th>Name</th>
-                                        <th>Description</th>>
+                                        <th>Description</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -66,10 +66,10 @@
                                     <tr v-for="(category, index) in searchFilter" :key="category.id">
                                         <td scope="row">{{ index+1 }}</td>
                                         <td>
-                                            <img :src="category.photo" id="em_photo" alt="">
+                                            <img :src="category.categoryphoto" id="em_photo" alt="">
                                         </td>
-                                        <td>{{ category.name }}</td>
-                                        <td>{{ category.description }}</td>
+                                        <td>{{ category.categoryname }}</td>
+                                        <td>{{ category.categorydescription }}</td>
                                         <td>
                                             <router-link :to="{name: 'edit-category', params: { id: category.id } }"
                                                 class="btn btn-icon btn-outline-primary mr-1 mb-1 waves-effect waves-light">
@@ -104,7 +104,7 @@
             // }
             axios.get('/api/category')
                 .then(res => {
-                    // console.log(res.data)
+                    console.log(res.data)
                     this.categorys = res.data;
                 })
                 .catch(err => console.log(err.response.data))
@@ -113,8 +113,7 @@
             searchFilter() {
                 return this.categorys.filter(category => {
                     return (
-                        category.name.match(this.searchWord) || category.email.match(this.searchWord) || category.phone.match(this.searchWord)
-                        || category.shopname.match(this.searchWord) || category.address.match(this.searchWord)
+                        category.categoryname.match(this.searchWord) || category.categorydescription.match(this.searchWord)
                     );
                 })
             }

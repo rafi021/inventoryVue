@@ -22,3 +22,4 @@ Route::group([
 
 Route::apiResource('/employee', 'API\EmployeeController');
 Route::apiResource('/supplier', 'API\SupplierController');
+Route::apiResource('/category', 'API\CategoryController');

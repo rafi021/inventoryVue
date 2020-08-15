@@ -38,7 +38,7 @@
                 </li>
                 {{-- Employee Menu End --}}
                 {{--   Supplier Menu Start --}}
-                <li class="nav-item"><a href="#"><i class="feather icon-package"></i><span class="menu-title" data-i18n="Supplier">Supplier</span></a>
+                <li class="nav-item"><a href="#"><i class="feather icon-codepen"></i><span class="menu-title" data-i18n="Supplier">Supplier</span></a>
                     <ul class="menu-content">
                         <li>
                             <router-link :to="{name: 'store-supplier'}"><i class="feather icon-plus-circle"></i><span class="menu-item" data-i18n="Add">Add Supplier</span>
