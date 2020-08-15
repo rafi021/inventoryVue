@@ -38,7 +38,7 @@ class SupplierController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SupplierRequest $request)
     {
         $employee_id = Supplier::insertGetId([
             'name' => $request->input('name'),
@@ -98,7 +98,7 @@ class SupplierController extends Controller
      * @param  \App\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Supplier $supplier)
+    public function update(SupplierRequest $request, Supplier $supplier)
     {
         $supplier->update([
             'name' => $request->input('name'),
