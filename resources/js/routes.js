@@ -29,6 +29,11 @@ let store_product = require('./pages/product/create.vue').default;
 let edit_product = require('./pages/product/edit.vue').default;
 let index_product = require('./pages/product/index.vue').default;
 // Product Meny Route End
+// Expense Meny Route Start
+let store_expense = require('./pages/expense/create.vue').default;
+let edit_expense = require('./pages/expense/edit.vue').default;
+let index_expense = require('./pages/expense/index.vue').default;
+// Expense Meny Route End
 
 
 
@@ -58,4 +63,9 @@ export const routes = [
     {path: '/edit/product/:id', component: edit_product, name: 'edit-product'},
     {path: '/product', component: index_product, name: 'index-product'},
     // Product Menu Route List End
+    // Expense Menu Route List Start
+    {path: '/store/expense', component: store_expense, name: 'store-expense'},
+    {path: '/edit/expense/:id', component: edit_expense, name: 'edit-expense'},
+    {path: '/expense', component: index_expense, name: 'index-expense'},
+    // Expense Menu Route List End
 ];

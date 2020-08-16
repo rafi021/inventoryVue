@@ -7,7 +7,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><router-link :to="{name: 'dashboard'}">Home</router-link>
                         </li>
-                        <li class="breadcrumb-item"><router-link :to="{name: 'index-product'}">All Product</router-link>
+                        <li class="breadcrumb-item"><router-link :to="{name: 'store-product'}">All Product</router-link>
                         </li>
                         <li class="breadcrumb-item active"><router-link to="#">Product Update Form</router-link>
                         </li>
