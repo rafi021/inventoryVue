@@ -14,4 +14,9 @@ class Supplier extends Model
         'photo',
         'shopname',
     ];
+
+    public function products()
+    {
+        return $this->hasMany('App\Product');
+    }
 }

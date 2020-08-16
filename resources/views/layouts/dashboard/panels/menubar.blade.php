@@ -65,7 +65,20 @@
                     </ul>
                 </li>
                 {{--   Category Menu End --}}
-
+                {{--   Product Menu Start --}}
+                <li class="nav-item"><a href="#"><i class="feather icon-shopping-bag"></i><span class="menu-title" data-i18n="Product">Product</span></a>
+                    <ul class="menu-content">
+                        <li>
+                            <router-link :to="{name: 'store-product'}"><i class="feather icon-plus-circle"></i><span class="menu-item" data-i18n="Add">Add Product</span>
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{name: 'index-product'}"><i class="feather icon-list"></i><span class="menu-item" data-i18n="Details">All Product</span>
+                            </router-link>
+                        </li>
+                    </ul>
+                </li>
+                {{--   Product Menu End --}}
                 {{-- User Code End Here --}}
                 <li class=" nav-item"><a href="app-chat.html"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">Chat</span></a>
                 </li>

@@ -18,4 +18,13 @@ class Product extends Model
         'buying_date',
         'product_image',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
+    public function supplier()
+    {
+        return $this->belongsTo('App\Supplier');
+    }
 }

@@ -24,7 +24,11 @@ let store_category = require('./pages/category/create.vue').default;
 let edit_category = require('./pages/category/edit.vue').default;
 let index_category = require('./pages/category/index.vue').default;
 // Category Meny Route End
-
+// Product Meny Route Start
+let store_product = require('./pages/product/create.vue').default;
+let edit_product = require('./pages/product/edit.vue').default;
+let index_product = require('./pages/product/index.vue').default;
+// Product Meny Route End
 
 
 
@@ -49,4 +53,9 @@ export const routes = [
     {path: '/edit/category/:id', component: edit_category, name: 'edit-category'},
     {path: '/category', component: index_category, name: 'index-category'},
     // Category Menu Route List End
+    // Product Menu Route List Start
+    {path: '/store/product', component: store_product, name: 'store-product'},
+    {path: '/edit/product/:id', component: edit_product, name: 'edit-product'},
+    {path: '/product', component: index_product, name: 'index-product'},
+    // Product Menu Route List End
 ];
