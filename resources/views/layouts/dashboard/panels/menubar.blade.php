@@ -93,6 +93,20 @@
                     </ul>
                 </li>
                 {{--   Expense Menu End --}}
+                {{--   Salary Menu Start --}}
+                <li class="nav-item"><a href="#"><i class="feather icon-dollar-sign"></i><span class="menu-title" data-i18n="Salary">Salary</span></a>
+                    <ul class="menu-content">
+                        <li>
+                            <router-link :to="{name: 'given-salary'}"><i class="feather icon-plus-circle"></i><span class="menu-item" data-i18n="Add">Add Salary</span>
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{name: 'index-salary'}"><i class="feather icon-list"></i><span class="menu-item" data-i18n="Details">All Salary</span>
+                            </router-link>
+                        </li>
+                    </ul>
+                </li>
+                {{--   Salary Menu End --}}                
                 {{-- User Code End Here --}}
                 <li class=" nav-item"><a href="app-chat.html"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">Chat</span></a>
                 </li>

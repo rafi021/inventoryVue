@@ -34,6 +34,14 @@ let store_expense = require('./pages/expense/create.vue').default;
 let edit_expense = require('./pages/expense/edit.vue').default;
 let index_expense = require('./pages/expense/index.vue').default;
 // Expense Meny Route End
+// Salary Meny Route Start
+// let store_salary = require('./pages/salary/create.vue').default;
+// let edit_salary = require('./pages/salary/edit.vue').default;
+let index_salary = require('./pages/salary/index.vue').default;
+let given_salary = require('./pages/salary/all_employee.vue').default;
+let pay_salary = require('./pages/salary/create.vue').default;
+let view_salary = require('./pages/salary/view.vue').default;
+// Salary Meny Route End
 
 
 
@@ -68,4 +76,10 @@ export const routes = [
     {path: '/edit/expense/:id', component: edit_expense, name: 'edit-expense'},
     {path: '/expense', component: index_expense, name: 'index-expense'},
     // Expense Menu Route List End
+    // Salary Menu Route List Start
+    {path: '/pay-salary/:id', component: pay_salary, name: 'pay-salary'},
+    {path: '/given-salary', component: given_salary, name: 'given-salary'},
+    {path: '/salary', component: index_salary, name: 'index-salary'},
+    {path: '/salary/details/:id', component: view_salary, name: 'view-salary'},
+    // Salary Menu Route List End
 ];

@@ -26,6 +26,15 @@ class Notification{
         }).show();
     }
 
+    danger(message){
+        new Noty({
+            type: 'error',
+            layout: 'topRight',
+            text: message,
+            timeout: 2000,
+        }).show();
+    }
+
     warning(){
         new Noty({
             type: 'warning',
