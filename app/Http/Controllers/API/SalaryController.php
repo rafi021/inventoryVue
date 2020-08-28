@@ -75,6 +75,13 @@ class SalaryController extends Controller
      * @param  \App\Salary  $salary
      * @return \Illuminate\Http\Response
      */
+    public function show(Salary $salary){
+        
+        $salary_unit = DB::table('salaries')->join('employees','salaries.employee_id', 'employees.id')->select('employees.name', 'employees.email', 'salaries.*')
+        ->where('salaries.id', $salary->id)
+        ->get();
+        return response()->json($salary_unit);
+    }
     public function showSalary($id)
     {
         $month = $id;
@@ -106,16 +113,15 @@ class SalaryController extends Controller
     public function update(Request $request, Salary $salary)
     {
         $validateData = $request->validate([
-            'employee_id' => 'numeric',
-            'amount' => 'numeric',
+            'salary_month' => 'required'
         ]);
 
-       $salary->update([
-            'employee_id' => $request->input('employee_id'),
+        $salary->update([
+            'employee_id' => $request->input('id'),
             'amount' => $request->input('amount'),
-            'salary_date' => $request->input('salary_date'),
+            'salary_date' => Carbon::now()->format('d/m/y'),
             'salary_month' => $request->input('salary_month'),
-            'salary_year' => $request->input('salary_year'),
+            'salary_year' => Carbon::now()->format('Y'),
         ]);
 
         return response()->json([
