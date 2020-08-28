@@ -14,9 +14,9 @@
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" nav-item"><router-link :to="{name: 'dashboard'}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></router-link>
                     <ul class="menu-content">
-                        <li class="active"><a href="dashboard-analytics.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Analytics</span></a>
+                        <li class="active"><a href="dashboard-analytics.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Dashboard</span></a>
                         </li>
-                        <li><a href="dashboard-ecommerce.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">eCommerce</span></a>
+                        <li><a href="dashboard-ecommerce.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="POS">POS</span></a>
                         </li>
                     </ul>
                 </li>
@@ -106,8 +106,29 @@
                         </li>
                     </ul>
                 </li>
-                {{--   Salary Menu End --}}                
+                {{--   Salary Menu End --}}
+                {{-- Stock Menu Start --}}
+                <li class=" nav-item">
+                    <router-link :to="{name: 'stock'}"><i class="feather icon-truck"></i><span class="menu-title" data-i18n="Stock">Stock</span></router-link>
+                </li>
+                {{-- Stock Menu End --}}
+                {{--   Customer Menu Start --}}
+                <li class="nav-item"><a href="#"><i class="feather icon-users"></i><span class="menu-title" data-i18n="Customer">Customer</span></a>
+                    <ul class="menu-content">
+                        <li>
+                            <router-link :to="{name: 'store-customer'}"><i class="feather icon-user-plus"></i><span class="menu-item" data-i18n="Add">Add Customer</span>
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{name: 'index-customer'}"><i class="feather icon-user-check"></i><span class="menu-item" data-i18n="Details">All Customer</span>
+                            </router-link>
+                        </li>
+                    </ul>
+                </li>
+                {{--   Customer Menu End --}}
                 {{-- User Code End Here --}}
+
+{{--                 
                 <li class=" nav-item"><a href="app-chat.html"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">Chat</span></a>
                 </li>
                 <li class=" nav-item"><a href="app-todo.html"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">Todo</span></a>
@@ -397,7 +418,8 @@
                 <li class=" nav-item"><a href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/documentation"><i class="feather icon-folder"></i><span class="menu-title" data-i18n="Documentation">Documentation</span></a>
                 </li>
                 <li class=" nav-item"><a href="https://pixinvent.ticksy.com/"><i class="feather icon-life-buoy"></i><span class="menu-title" data-i18n="Raise Support">Raise Support</span></a>
-                </li>
+                </li> --}}
+                
             </ul>
         </div>
     </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Customer;
 use App\Product;
 use App\Salary;
 use Illuminate\Database\Seeder;
@@ -19,6 +20,7 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             ExpenseSeeder::class,
             SalarySeeder::class,
+            Customer::class,
         ]);
     }
 }

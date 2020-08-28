@@ -19,30 +19,37 @@ let store_supplier = require('./pages/supplier/create.vue').default;
 let edit_supplier = require('./pages/supplier/edit.vue').default;
 let index_supplier = require('./pages/supplier/index.vue').default;
 // Supplier Menu Route End
-// Category Meny Route Start
+// Category Menu Route Start
 let store_category = require('./pages/category/create.vue').default;
 let edit_category = require('./pages/category/edit.vue').default;
 let index_category = require('./pages/category/index.vue').default;
-// Category Meny Route End
-// Product Meny Route Start
+// Category Menu Route End
+// Product Menu Route Start
 let store_product = require('./pages/product/create.vue').default;
 let edit_product = require('./pages/product/edit.vue').default;
 let index_product = require('./pages/product/index.vue').default;
-// Product Meny Route End
-// Expense Meny Route Start
+// Product Menu Route End
+// Expense Menu Route Start
 let store_expense = require('./pages/expense/create.vue').default;
 let edit_expense = require('./pages/expense/edit.vue').default;
 let index_expense = require('./pages/expense/index.vue').default;
-// Expense Meny Route End
-// Salary Meny Route Start
+// Expense Menu Route End
+// Salary Menu Route Start
 // let store_salary = require('./pages/salary/create.vue').default;
 let edit_salary = require('./pages/salary/edit.vue').default;
 let index_salary = require('./pages/salary/index.vue').default;
 let given_salary = require('./pages/salary/all_employee.vue').default;
 let pay_salary = require('./pages/salary/create.vue').default;
 let view_salary = require('./pages/salary/view.vue').default;
-// Salary Meny Route End
-
+// Salary Menu Route End
+// Stock Menu Route Start
+let index_stock = require('./pages/product/stock.vue').default;
+// Stock Menu Route End
+// Customer Menu Route Start
+let store_customer = require('./pages/customer/create.vue').default;
+let edit_customer = require('./pages/customer/edit.vue').default;
+let index_customer = require('./pages/customer/index.vue').default;
+// Customer Menu Route End
 
 
 export const routes = [
@@ -83,4 +90,12 @@ export const routes = [
     {path: '/salary/edit/:id', component: edit_salary, name: 'edit-salary'},
     {path: '/salary/details/:id', component: view_salary, name: 'view-salary'},
     // Salary Menu Route List End
+    // Stock Menu Routes List Start
+    {path: '/stock', component: index_stock, name: 'stock'},
+    // Stock Menu Routes List End
+     //Customer Menu Route List Start
+     { path: '/store/customer', component: store_customer, name: 'store-customer'},
+     { path: '/edit/customer/:id', component: edit_customer, name: 'edit-customer'},
+     { path: '/customer', component: index_customer, name: 'index-customer'},
+     //Customer Menu Route List End
 ];

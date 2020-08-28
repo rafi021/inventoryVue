@@ -26,5 +26,6 @@ Route::apiResource('/category', 'API\CategoryController');
 Route::apiResource('/product', 'API\ProductController');
 Route::apiResource('/expense', 'API\ExpenseController');
 Route::apiResource('/salary', 'API\SalaryController');
+Route::apiResource('/customer', 'API\CustomerController');
 
 Route::get('/salary/details/{id}','API\SalaryController@showSalary');
