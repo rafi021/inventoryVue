@@ -50,6 +50,9 @@ let store_customer = require('./pages/customer/create.vue').default;
 let edit_customer = require('./pages/customer/edit.vue').default;
 let index_customer = require('./pages/customer/index.vue').default;
 // Customer Menu Route End
+// POS Menu Route Start
+let index_pos = require('./pages/pos/index.vue').default;
+// POS Menu Route Start
 
 
 export const routes = [
@@ -94,8 +97,11 @@ export const routes = [
     {path: '/stock', component: index_stock, name: 'stock'},
     // Stock Menu Routes List End
      //Customer Menu Route List Start
-     { path: '/store/customer', component: store_customer, name: 'store-customer'},
-     { path: '/edit/customer/:id', component: edit_customer, name: 'edit-customer'},
-     { path: '/customer', component: index_customer, name: 'index-customer'},
-     //Customer Menu Route List End
+    { path: '/store/customer', component: store_customer, name: 'store-customer'},
+    { path: '/edit/customer/:id', component: edit_customer, name: 'edit-customer'},
+    { path: '/customer', component: index_customer, name: 'index-customer'},
+    //Customer Menu Route List End
+    //POS Menu Route List Start
+    {path: '/pos', component: index_pos, name: 'pos'},
+    //POS Menu Route List End
 ];

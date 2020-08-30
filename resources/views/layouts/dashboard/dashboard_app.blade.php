@@ -12,8 +12,6 @@
     <meta name="author" content="PIXINVENT">
     <title>{{ env('APP_NAME') }}</title>
 
-    <script src="{{ mix('js/app.js') }}" defer></script>
-
     {{-- Style Section Start --}}
     @include('layouts.dashboard.panels.styles')
     {{-- Style Section End --}}
@@ -65,6 +63,7 @@
     @include('layouts.dashboard.panels.scripts')
     {{-- Script Section End --}}
 
+<script src="{{ mix('js/app.js') }}" defer></script>
 <script>
     const token = localStorage.getItem('token');
     // const panel_header = document.getElementById('panel_header');

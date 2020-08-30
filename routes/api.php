@@ -29,3 +29,4 @@ Route::apiResource('/salary', 'API\SalaryController');
 Route::apiResource('/customer', 'API\CustomerController');
 
 Route::get('/salary/details/{id}','API\SalaryController@showSalary');
+Route::get('/getting/product/{id}','API\POSController@getProduct');

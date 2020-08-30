@@ -12,11 +12,13 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class=" nav-item"><router-link :to="{name: 'dashboard'}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></router-link>
+                <li class=" nav-item"><router-link :to="{name: 'dashboard'}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Home">Home</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></router-link>
                     <ul class="menu-content">
-                        <li class="active"><a href="dashboard-analytics.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Dashboard</span></a>
+                        <li class="active">
+                            <router-link :to="{name: 'dashboard'}"><i class="feather icon-trending-up"></i><span class="menu-item" data-i18n="Analytics">Dashboard</span></router-link>
                         </li>
-                        <li><a href="dashboard-ecommerce.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="POS">POS</span></a>
+                        <li>
+                            <router-link :to="{name: 'pos'}"><i class="feather icon-archive"></i><span class="menu-item" data-i18n="POS">POS</span></router-link>
                         </li>
                     </ul>
                 </li>
