@@ -30,3 +30,9 @@ Route::apiResource('/customer', 'API\CustomerController');
 
 Route::get('/salary/details/{id}','API\SalaryController@showSalary');
 Route::get('/getting/product/{id}','API\POSController@getProduct');
+Route::get('/add-to-cart/{id}','API\CartController@alltToCart');
+Route::get('/remove-from-cart/{id}','API\CartController@removeFromCart');
+Route::get('/cart/product','API\CartController@allCartProduct');
+
+Route::get('/add-to-cart/inc/{id}','API\CartController@incrementCart');
+Route::get('/add-to-cart/dec/{id}','API\CartController@decrementCart');

@@ -46,6 +46,9 @@ window.Notification = Notification;
 import axios from "axios";
 window.axios = axios;
 // axios end
+
+window.Reload = new Vue();
+
 const app = new Vue({
     el: '#app',
     router,

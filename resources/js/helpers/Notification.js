@@ -52,6 +52,14 @@ class Notification{
             timeout: 2000,
         }).show();
     }
+    cart_success(message){
+        new Noty({
+            type: 'success',
+            layout: 'topRight',
+            text: message,
+            timeout: 2000,
+        }).show();
+    }
 }
 
 export default Notification = new Notification();

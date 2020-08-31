@@ -23,13 +23,22 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr v-for="(product) in searchFilter" :key="product.id">
+                                            <tr v-for="(product) in carts" :key="product.id">
                                                 <td>{{ product.product_name }}</td>
-                                                <td>Qty</td>
-                                                <td>Unit</td>
-                                                <td>Total</td>
                                                 <td>
-                                                    <a @click="deleteProduct(product.id)"
+                                                    <button class="btn btn-icon btn-outline-success mr-1 mb-1 waves-effect waves-light"
+                                                    @click.prevent="addItem(product.id)"
+                                                    >+</button>
+                                                    <input type="text" readonly :value="product.product_quantity" style="width: 30px;">
+                                                    <button class="btn btn-icon btn-outline-danger mr-1 mb-1 waves-effect waves-light"
+                                                    @click.prevent="reduceItem(product.id)"
+                                                    v-if="product.product_quantity>0"
+                                                    >-</button>
+                                                </td>
+                                                <td>{{ product.product_price }}</td>
+                                                <td>{{ product.sub_total }}</td>
+                                                <td>
+                                                    <a @click="removeItem(product.id)"
                                                         class="btn btn-icon btn-outline-danger mr-1 mb-1 waves-effect waves-light">
                                                         <i class="feather icon-trash"></i></a>
                                                 </td>
@@ -42,23 +51,23 @@
                                             <tbody>
                                                 <tr>
                                                     <th>Total Quantity</th>
-                                                    <td>100</td>
+                                                    <td>{{ qty }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>SubTotal</th>
-                                                    <td>114000 USD</td>
+                                                    <td>{{ subTotal }} USD</td>
                                                 </tr>
                                                 <tr>
                                                     <th>DISCOUNT (5%)</th>
-                                                    <td>5700 USD</td>
+                                                    <td>{{ (subTotal*5)/100 }} USD</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>VAT (5%)</th>
-                                                    <td>5700 USD</td>
+                                                    <th>VAT (15%)</th>
+                                                    <td>{{ (subTotal*15)/100 }} USD</td>
                                                 </tr>
                                                 <tr>
                                                     <th>TOTAL</th>
-                                                    <td>108300 USD</td>
+                                                    <td>{{ (subTotal+(subTotal*15)/100)-((subTotal*5)/100)  }} USD</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -71,8 +80,7 @@
                                                         <div class="form-group">
                                                             <label for="customer-name-vertical">Customer Name</label>
                                                             <select name="" id="" class="form-control" v-model="customer_id">
-                                                                <option value="">Mahmud</option>
-                                                                <option value="">Ibrahim</option>
+                                                                <option value="" v-for="customer in customers" :key="customer.id">{{ customer.name }}</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -137,7 +145,7 @@
                                 <div class="row">
                                     <div class="col-lg-4 col-md-6 col-sm-6 col-4" v-for="product in searchFilter"
                                         :key="product.id">
-                                        <a href="">
+                                        <a class="btn btn-sm" href="" @click.prevent="addToCart(product.id)">
                                             <div class="card">
                                                 <div class="card-content">
                                                     <img class="card-img-top img-fluid" :src="
@@ -164,7 +172,7 @@
                                 <div class="row">
                                     <div class="col-lg-4 col-md-6 col-sm-6 col-4" v-for="getproduct in filterSearch"
                                         :key="getproduct.id">
-                                        <a href="">
+                                        <a class="btn btn-sm" href="" @click.prevent="addToCart(getproduct.id)">
                                             <div class="card">
                                                 <div class="card-content">
                                                     <img class="card-img-top img-fluid" :src="
@@ -205,14 +213,45 @@
                 categories: "",
                 getproducts: [],
                 searchWord: "",
-                getsearchWord: ""
+                getsearchWord: "",
+                customers: [],
+                carts: [],
+                errors: '',
+                customer_id: null,
+                pay: null,
+                due: null,
             };
         },
         created() {
             this.getAllProducts();
             this.getAllCategory();
+            this.getAllCustomer();
+            this.getCartProduct();
+            Reload.$on('AfterAdd', () =>{
+                this.getCartProduct();
+            })
         },
         methods: {
+            addToCart(id){
+                // alert(id);
+                axios.get(`/api/add-to-cart/${id}`)
+                .then((res) => {
+                    Reload.$emit('AfterAdd');
+                    if(res.data.type == 'success')
+                    Notification.cart_success(res.data.message);
+                })
+                .catch(err => console.log(err))
+            },
+            getCartProduct(){
+                axios.get('/api/cart/product')
+                .then(res => this.carts = res.data)
+                .catch(err => console.log(err));
+            },
+            getAllCustomer(){
+                axios.get('/api/customer')
+                .then(res => this.customers = res.data)
+                .catch(err => console.log(err));
+            },
             getAllProducts() {
                 axios
                     .get("/api/product")
@@ -230,6 +269,33 @@
                     .get(`/api/getting/product/${id}`)
                     .then(res => (this.getproducts = res.data))
                     .catch(err => console.log(err));
+            },
+            removeItem(id){
+                axios.get(`/api/remove-from-cart/${id}`)
+                .then((res) => {
+                    Reload.$emit('AfterAdd');
+                    if(res.data.type == 'success')
+                    Notification.cart_success(res.data.message);
+                })
+                .catch(err => console.log(err))
+            },
+            addItem(id){
+                axios.get(`/api/add-to-cart/inc/${id}`)
+                .then((res) => {
+                    Reload.$emit('AfterAdd');
+                    if(res.data.type == 'success')
+                    Notification.cart_success(res.data.message);
+                })
+                .catch(err => console.log(err))
+            },
+            reduceItem(id){
+                axios.get(`/api/add-to-cart/dec/${id}`)
+                .then((res) => {
+                    Reload.$emit('AfterAdd');
+                    if(res.data.type == 'success')
+                    Notification.cart_success(res.data.message);
+                })
+                .catch(err => console.log(err))
             }
         },
         computed: {
@@ -242,12 +308,24 @@
                 if (this.products.length > 0) {
                     return this.products.filter(product => {
                         return (
-                            product.product_name.match(this.searchWord) ||
-                            product.product_code.match(this.searchWord) ||
-                            product.category.categoryname.match(this.searchWord)
+                            product.product_name.match(this.searchWord) || product.product_code.match(this.searchWord) || product.category.categoryname.match(this.searchWord)
                         );
                     });
                 }
+            },
+            qty(){
+                let cart_sum_quantity = 0;
+                for(let index=0; index < this.carts.length; index++ ){
+                    cart_sum_quantity +=parseFloat(this.carts[index].product_quantity)
+                }
+                return cart_sum_quantity;
+            },
+            subTotal(){
+                let cart_sub_total = 0;
+                for(let index=0; index < this.carts.length; index++ ){
+                    cart_sub_total +=parseFloat(this.carts[index].sub_total)
+                }
+                return cart_sub_total;
             }
         }
     };
