@@ -81,6 +81,20 @@
                     </ul>
                 </li>
                 {{--   Product Menu End --}}
+                {{--   Order Menu Start --}}
+                <li class="nav-item"><a href="#"><i class="feather icon-book"></i><span class="menu-title" data-i18n="Order">Order</span></a>
+                    <ul class="menu-content">
+                        <li>
+                            <router-link :to="{name: 'today-order'}"><i class="feather icon-plus-circle"></i><span class="menu-item" data-i18n="Add">Today Order</span>
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{name: 'index-order'}"><i class="feather icon-list"></i><span class="menu-item" data-i18n="Details">All Order</span>
+                            </router-link>
+                        </li>
+                    </ul>
+                </li>
+                {{--   Order Menu End --}}
                 {{--   Expense Menu Start --}}
                 <li class="nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Expense">Expense</span></a>
                     <ul class="menu-content">

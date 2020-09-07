@@ -36,3 +36,8 @@ Route::get('/cart/product','API\CartController@allCartProduct');
 
 Route::get('/add-to-cart/inc/{id}','API\CartController@incrementCart');
 Route::get('/add-to-cart/dec/{id}','API\CartController@decrementCart');
+Route::post('/order', 'API\POSController@orderStore');
+
+Route::get('/orders/today', 'API\OrderController@todayOrders');
+Route::get('/orders/all', 'API\OrderController@allOrders');
+Route::get('/orders/details/{id}', 'API\OrderController@orderDetail');

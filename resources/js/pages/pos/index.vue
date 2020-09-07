@@ -67,39 +67,39 @@
                                                 </tr>
                                                 <tr>
                                                     <th>TOTAL</th>
-                                                    <td>{{ (subTotal+(subTotal*15)/100)-((subTotal*5)/100)  }} USD</td>
+                                                    <td>{{ getTotal }} USD</td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                 </div>
                                 <div class="card-body">
-                                        <form class="form form-vertical" @submit.prevent="paymentMethod">
+                                        <form class="form form-vertical" @submit.prevent="orderMethod">
                                             <div class="form-body">
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label for="customer-name-vertical">Customer Name</label>
                                                             <select name="" id="" class="form-control" v-model="customer_id">
-                                                                <option value="" v-for="customer in customers" :key="customer.id">{{ customer.name }}</option>
+                                                                <option :value="customer.id" v-for="customer in customers" :key="customer.id">{{ customer.name }}</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label for="pay-id-vertical">Pay</label>
-                                                            <input type="text" id="pay-id-vertical" class="form-control" name="pay-id" placeholder="pay" required v-model="pay">
+                                                            <input type="text" id="pay-id-vertical" class="form-control" name="pay-id" placeholder="pay" required v-model="pay_amount">
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label for="due-id-vertical">Due</label>
-                                                            <input type="text" id="due-id-vertical" class="form-control" name="due-id" placeholder="due" required v-model="due">
+                                                            <input type="text" id="due-id-vertical" class="form-control" name="due-id" placeholder="due" required v-model="due_amount">
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label for="payment-method">Payment Method</label>
-                                                            <select name="" id="" class="form-control" v-model="customer_id">
+                                                            <select name="" id="" class="form-control" v-model="payment_method">
                                                                 <option value="cash">Cash</option>
                                                                 <option value="cheque">Cheque</option>
                                                                 <option value="giftcard">Gift Card</option>
@@ -157,7 +157,7 @@
                                                         <span class="badge badge-success" v-if="
                                                                 product.product_quantity >
                                                                     product.alert_quantity
-                                                            ">Available</span>
+                                                            ">Available {{ product.product_quantity }}</span>
                                                         <span class="badge badge-danger" v-else>Stock Out</span>
                                                     </div>
                                                 </div>
@@ -187,7 +187,7 @@
                                                         <span class="badge badge-success" v-if="
                                                                 getproduct.product_quantity >
                                                                     getproduct.alert_quantity
-                                                            ">Available</span>
+                                                            ">Available {{ product.product_quantity }}</span>
                                                         <span class="badge badge-danger" v-else>Stock Out</span>
                                                     </div>
                                                 </div>
@@ -217,9 +217,12 @@
                 customers: [],
                 carts: [],
                 errors: '',
-                customer_id: null,
-                pay: null,
-                due: null,
+
+                total: '',
+                customer_id: '',
+                pay_amount: '',
+                due_amount: '',
+                payment_method: ''
             };
         },
         created() {
@@ -230,8 +233,33 @@
             Reload.$on('AfterAdd', () =>{
                 this.getCartProduct();
             })
+            Reload.$on('AfterProcess', () =>{
+                this.$router.push({name: 'pos'})
+                this.getAllProducts();
+                this.getCartProduct();
+            })
         },
         methods: {
+            orderMethod(){
+                let order_data = {
+                    qty: this.qty,
+                    subtotal: this.subTotal,
+                    customer_id: this.customer_id,
+                    pay_amount: this.pay_amount,
+                    due_amount: this.due_amount,
+                    payment_method: this.payment_method,
+                    total: this.total,
+                };
+                console.log(order_data);
+                axios.post('/api/order', order_data)
+                .then(res => {
+                    if(res.data.type == 'success'){
+                        Notification.cart_success(res.data.message);
+                        Reload.$emit('AfterProcess');
+                    }
+                })
+                .catch(err => console.log(err))
+            },
             addToCart(id){
                 // alert(id);
                 axios.get(`/api/add-to-cart/${id}`)
@@ -326,6 +354,10 @@
                     cart_sub_total +=parseFloat(this.carts[index].sub_total)
                 }
                 return cart_sub_total;
+            },
+            getTotal(){
+                this.total= (this.subTotal+((this.subTotal*15)/100)) - ((this.subTotal*5)/100);
+                return this.total;
             }
         }
     };
