@@ -134,4 +134,15 @@ class POSController extends Controller
             'request' => $request->all(),
         ],200);
     }
+
+    public function searchOrder(Request $request)
+    {
+        $orderDate = $request->input('date');
+        $orders = Order::whereDate('created_at', '=',$orderDate)->with('customer')->get();
+        return response()->json([
+            'type' => 'Susccess',
+            'orders' => $orders,
+            'request'=>$orderDate,
+        ],200);
+    }
 }

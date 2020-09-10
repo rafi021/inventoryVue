@@ -41,3 +41,7 @@ Route::post('/order', 'API\POSController@orderStore');
 Route::get('/orders/today', 'API\OrderController@todayOrders');
 Route::get('/orders/all', 'API\OrderController@allOrders');
 Route::get('/orders/details/{id}', 'API\OrderController@orderDetail');
+
+Route::post('/order/search', 'API\POSController@searchOrder');
+
+Route::get('/dashboard','API\DashboardController@index');

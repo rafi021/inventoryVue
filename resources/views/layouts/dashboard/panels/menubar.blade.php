@@ -92,6 +92,10 @@
                             <router-link :to="{name: 'index-order'}"><i class="feather icon-list"></i><span class="menu-item" data-i18n="Details">All Order</span>
                             </router-link>
                         </li>
+                        <li>
+                            <router-link :to="{name: 'search-order'}"><i class="feather icon-eye"></i><span class="menu-item" data-i18n="Details">Search Order</span>
+                            </router-link>
+                        </li>
                     </ul>
                 </li>
                 {{--   Order Menu End --}}

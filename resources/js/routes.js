@@ -55,6 +55,7 @@ let index_pos = require('./pages/pos/index.vue').default;
 // POS Menu Route Start
 // Order Menu Route Start
 let index_order = require('./pages/order/index.vue').default;
+let search_order = require('./pages/order/search.vue').default;
 let view_order = require('./pages/order/order.vue').default;
 let today_order = require('./pages/order/TodayOrder.vue').default;
 // Order Menu Route Start
@@ -112,6 +113,7 @@ export const routes = [
     //Order Menu Route List Start
     {path: '/order/today', component: today_order, name: 'today-order'},
     {path: '/order/all', component: index_order, name: 'index-order'},
+    {path: '/order/search', component: search_order, name: 'search-order'},
     {path: '/order/details/:id', component: view_order, name: 'view-order'},
     //Order Menu Route List End
 ];
